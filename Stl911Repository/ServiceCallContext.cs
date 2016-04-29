@@ -16,6 +16,7 @@ namespace Stl911Repository
         }
 
         public DbSet<Stl911Domain.ServiceCall> ServiceCall { get; set; }
+        public DbSet<Stl911Domain.AppInformation> AppInformation { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

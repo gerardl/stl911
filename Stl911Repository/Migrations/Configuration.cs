@@ -16,6 +16,12 @@ namespace Stl911Repository.Migrations
         {
             //  This method will be called after migrating to the latest version.
 
+            var versionRow = context.AppInformation.FirstOrDefault();
+            if (versionRow == null)
+            {
+                context.AppInformation.Add(new Stl911Domain.AppInformation { Version = "1.0", LastSyncTime = DateTime.Now.AddHours(-1) });
+            }
+
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
