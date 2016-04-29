@@ -1089,6 +1089,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stl911Domain\Stl911Domain.csproj">
+      <Project>{1bc275b4-8e2e-422b-b8e7-7fae998d2b27}</Project>
+      <Name>Stl911Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Stl911Repository\Stl911Repository.csproj">
+      <Project>{db72de18-8a0c-4ade-9ce0-960ecc01ef88}</Project>
+      <Name>Stl911Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

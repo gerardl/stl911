@@ -37,6 +37,7 @@ namespace Stl911.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<Stl911Domain.IServiceCallRepository, Stl911Repository.ServiceCallRepository>();
         }
     }
 }

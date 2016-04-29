@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IServiceCallRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceCall.cs" />
+    <Compile Include="ServiceCallService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
