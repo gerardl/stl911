@@ -10,5 +10,6 @@ namespace Stl911Domain
     {
         void ScrapeServiceCalls();
         IEnumerable<ServiceCall> GetServiceCalls();
+        IEnumerable<string> GetServiceCallLocations();
     }
 }

@@ -15,9 +15,19 @@ namespace Stl911Domain
             _IServiceCallRepository = iServiceCallRepository;
         }
 
+        public void ScrapeServiceCalls()
+        {
+            _IServiceCallRepository.ScrapeServiceCalls();
+        }
+
         public IEnumerable<ServiceCall> GetServiceCalls()
         {
             return _IServiceCallRepository.GetServiceCalls();
+        }
+
+        public IEnumerable<string> GetServiceCallLocations()
+        {
+            return _IServiceCallRepository.GetServiceCallLocations();
         }
     }
 }

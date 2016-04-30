@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stl911Domain", "Stl911Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stl911Repository", "Stl911Repository\Stl911Repository.csproj", "{DB72DE18-8A0C-4ADE-9CE0-960ECC01EF88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stl911Console", "Stl911Console\Stl911Console.csproj", "{DFEAAD53-2A78-40EE-8C94-5041C9549D4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DB72DE18-8A0C-4ADE-9CE0-960ECC01EF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB72DE18-8A0C-4ADE-9CE0-960ECC01EF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB72DE18-8A0C-4ADE-9CE0-960ECC01EF88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEAAD53-2A78-40EE-8C94-5041C9549D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEAAD53-2A78-40EE-8C94-5041C9549D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEAAD53-2A78-40EE-8C94-5041C9549D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEAAD53-2A78-40EE-8C94-5041C9549D4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
