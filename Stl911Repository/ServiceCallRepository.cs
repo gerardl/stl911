@@ -10,7 +10,7 @@ namespace Stl911Repository
 {
     public class ServiceCallRepository : IServiceCallRepository
     {
-        public IEnumerable<ServiceCall> GetServiceCalls()
+        public void GetServiceCalls()
         {
             try
             {
@@ -24,7 +24,7 @@ namespace Stl911Repository
 
                     var lastPoliceUpdate = DateTime.Parse(doc.DocumentNode.SelectNodes("//*[@id=\"lblLastUpdate\"]")[0].InnerText.Replace("Last updated: ", "").Replace(" (Central Standard Time)", ""));
                     var lastAppUpdate = context.AppInformation.First().LastSyncTime;
-                    if (1 == 1)//(lastPoliceUpdate > lastAppUpdate)
+                    if (lastPoliceUpdate > lastAppUpdate)
                     {
                         HtmlNode table = doc.DocumentNode.SelectNodes("//*[@id=\"gvData\"]")[0];
                         foreach (HtmlNode row in table.SelectNodes("tr"))
@@ -35,25 +35,25 @@ namespace Stl911Repository
 
                             var servCall = new ServiceCall(rowColumns[1].InnerHtml, DateTime.Parse(rowColumns[0].InnerHtml), rowColumns[2].InnerHtml, rowColumns[3].InnerHtml);
                             serviceCalls.Add(servCall);
-
-                            serviceCalls.ForEach(f =>
-                            {
-                                if (context.ServiceCall.Any(a => a.ServiceCallIdentifier == f.ServiceCallIdentifier))
-                                {
-                                    context.ServiceCall.Attach(f);
-                                    context.Entry(f).State = System.Data.Entity.EntityState.Modified;
-                                }
-                                else
-                                {
-                                    context.ServiceCall.Add(f);
-                                }
-                            });
-
-                            context.SaveChanges();
                         }
-                    }
 
-                    return serviceCalls;
+                        serviceCalls.ForEach(f =>
+                        {
+                            var existingCall = context.ServiceCall.Where(w => w.ServiceCallIdentifier == f.ServiceCallIdentifier).SingleOrDefault();
+                            if (existingCall == null)
+                                context.ServiceCall.Add(f);
+                            else
+                            {
+                                existingCall.CallTime = f.CallTime;
+                                existingCall.Description = f.Description;
+                                existingCall.LocationRaw = f.LocationRaw;
+                                existingCall.LocationFriendly = f.LocationFriendly;
+                            }
+                        });
+
+                        context.AppInformation.First().LastSyncTime = lastPoliceUpdate;
+                        context.SaveChanges();
+                    }
                 }
             }
             catch (Exception)
