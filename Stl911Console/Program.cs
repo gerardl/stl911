@@ -38,7 +38,6 @@ namespace Stl911Console
             {
                 Console.WriteLine("*********** Scraping Failed! **************");
                 Console.WriteLine("Exception: " + e.Message);
-                throw;
             }
             
         }
