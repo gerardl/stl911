@@ -10,7 +10,7 @@ namespace Stl911Repository
 {
     public class ServiceCallRepository : IServiceCallRepository
     {
-        public void GetServiceCalls()
+        public void ScrapeServiceCalls()
         {
             try
             {
@@ -54,6 +54,41 @@ namespace Stl911Repository
                         context.AppInformation.First().LastSyncTime = lastPoliceUpdate;
                         context.SaveChanges();
                     }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<ServiceCall> GetServiceCalls()
+        {
+            try
+            {
+                using (var context = new ServiceCallContext())
+                {
+                    return context.ServiceCall
+                                    .OrderByDescending(o => o.CallTime)
+                                    .ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public IEnumerable<string> GetServiceCallLocations()
+        {
+            try
+            {
+                using (var context = new ServiceCallContext())
+                {
+                    return context.ServiceCall
+                                    .OrderByDescending(o => o.CallTime)
+                                    .Select(s => s.LocationFriendly)
+                                    .ToList();
                 }
             }
             catch (Exception)

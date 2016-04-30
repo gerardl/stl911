@@ -8,6 +8,7 @@ namespace Stl911Domain
 {
     public interface IServiceCallRepository
     {
+        void ScrapeServiceCalls();
         IEnumerable<ServiceCall> GetServiceCalls();
     }
 }
